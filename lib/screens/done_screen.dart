@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../home_controller.dart';
 import '../shared/models/todo_item.dart';
 import 'components/todo_item_list_tile.dart';
 
+// ignore: must_be_immutable
 class DoneScreen extends StatefulWidget {
-  const DoneScreen({
+  final HomeController controller;
+  DoneScreen({
     Key? key,
+    required this.controller,
     required this.itemList,
     required this.onResetItem,
     required this.onRemoveItem,
@@ -20,6 +24,14 @@ class DoneScreen extends StatefulWidget {
 }
 
 class _DoneScreenState extends State<DoneScreen> {
+  @override
+  void initState() {
+    widget.controller.listen((state) {
+      setState(() {});
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
